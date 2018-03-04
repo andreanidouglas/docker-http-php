@@ -1,0 +1,16 @@
+web:
+  image: andreani/nginx
+  ports:
+    - 80:80
+  volumes:
+    - /home/cmtedouglas/nginx:/var/www
+    - /home/cmtedouglas/nginx/sites-available:/etc/nginx/sites-enabled
+    - /home/cmtedouglas/nginx/log:/var/log/nginx
+  links:
+    - php
+
+php:
+  image: andreani/php-fpm
+  volumes:
+    - /home/cmtedouglas/nginx/php-fpm/config/php-fpm.conf:/etc/php7/fpm/php-fpm.conf
+    - /home/cmtedouglas/nginx:/var/www
