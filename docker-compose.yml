@@ -3,14 +3,14 @@ web:
   ports:
     - 80:80
   volumes:
-    - /home/cmtedouglas/nginx:/var/www
-    - /home/cmtedouglas/nginx/sites-available:/etc/nginx/sites-enabled
-    - /home/cmtedouglas/nginx/log:/var/log/nginx
+    - /home/cmte/docker-http-php:/var/www
+    - /home/cmte/docker-http-php/sites-available:/etc/nginx/sites-enabled
+    - /home/cmte/docker-http-php/log:/var/log/nginx
   links:
     - php
 
 php:
   image: andreani/php-fpm
   volumes:
-    - /home/cmtedouglas/nginx/php-fpm/config/php-fpm.conf:/etc/php7/fpm/php-fpm.conf
-    - /home/cmtedouglas/nginx:/var/www
+    - /home/cmte/docker-http-php/php-fpm/config/php-fpm.conf:/etc/php7/fpm/php-fpm.conf
+    - /home/cmte/docker-http-php:/var/www
